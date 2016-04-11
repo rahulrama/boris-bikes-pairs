@@ -1,4 +1,5 @@
+load 'docking_station.rb'
 
-describe DockingStation do 
-  
+describe DockingStation do
+
 end
