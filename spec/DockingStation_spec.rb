@@ -34,6 +34,20 @@ describe DockingStation do
 	station = DockingStation.new
 	station.dock(bike)
 	expect(station.bike).to eq bike
-end 
+end
+   # Our original test which passed
+   it 'returns error if dockingstation has already given out the bike' do
+   station = DockingStation.new
+   station.release_bike
+   expect{station.release_bike}.to raise_error
+   end
+   # Maker's walkthrough test gave error when bike.working
+   # describe '#release_bike' do
+   #   it 'raises an error when there are no bikes available' do
+           # Let's not dock a bike first:
+           # remember subject == DockingStation.new
+           #       expect { subject.release_bike }.to raise_error 'No bikes available'
+           # end
+           #end
 end
  
