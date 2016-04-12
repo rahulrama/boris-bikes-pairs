@@ -1,13 +1,15 @@
 require_relative 'bike'
 
 class DockingStation
+  attr_accessor :bike_rack
 
   def initialize
     @bike_rack = 0
   end
 
   def release_bike
-      Bike.new
+     raise StandardError, 'Piss off!' unless @bike_rack > 0
+     Bike.new #unless @bike_rack == 0
   end
 
   def return_bike(bike)

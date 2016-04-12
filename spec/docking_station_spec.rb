@@ -19,7 +19,11 @@ describe DockingStation do
   end
 
   it 'returns the bike' do
-  (expect(ds.return_bike(bike)).to eq bike) 
+  (expect(ds.return_bike(bike)).to eq bike)
+  end
+
+  it 'expects an error when docking_station tries to instantiate a new bike if there are 0 bikes in the dock' do
+      expect { ds.release_bike }.to raise_exception if ds.bike_rack == 0
   end
 
 
