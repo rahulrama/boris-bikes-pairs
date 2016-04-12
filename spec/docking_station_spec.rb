@@ -20,7 +20,7 @@ describe DockingStation do
 
   it 'returns the bike' do
   x = ds.bike_rack
-  (expect(bike.docked?).to eq true) && (expect(ds.bike_rack).to eq (x + 1))
+  (expect(bike.return_bike(ds)).to eq true) && (expect(ds.bike_rack).to eq (x + 1))
   end
   #bike boolean instance variable 'docked' = true
   #We will expect dockingstation instance variable 'bike_rack'.length to = bike_rack.length+1
