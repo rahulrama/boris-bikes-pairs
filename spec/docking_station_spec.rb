@@ -12,14 +12,15 @@ describe DockingStation do
 
   it 'releases a new bike' do
    expect(ds.release_bike.is_a?(Bike)).to eq true
+
+end
+
+  it 'releases a working bike' do
+    expect(ds.release_bike.working?).to eq true
+
   end
 
 end
 
-#
-# Compared using equal?, which compares object identity,
-#       but expected and actual are not the same object. Use
-#       `expect(actual).to eq(expected)` if you don't care about
-#       object identity in this example.
 
 #  Add a test to your DockingStation specification that a) gets a bike, and then b) expects the bike to be working
