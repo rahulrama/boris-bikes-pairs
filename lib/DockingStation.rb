@@ -21,9 +21,19 @@ def release_bike
     #@bike = Bike.new
     #end
     
-	def dock(docked_bike)
-	   @bike = docked_bike	
+#Our code which passed	
+def dock(docked_bike)
+	if @bike
+            fail "Dock already full"
+           else
+            @bike = docked_bike
+           end
 	end
 
+#Makers code which is more legible
+#def dock(bike)
+ #   fail 'Docking station full' if @bike
+  #  @bike = bike
+ # end
 
 end
