@@ -10,12 +10,9 @@ describe DockingStation do
   #current_bike = bike.release_bike
   # { expect(current_bike).to eq(Bike.new) }
 
-  it 'releases a new bike' do
-   expect(ds.release_bike.is_a?(Bike)).to eq true
-  end
-
-  it 'releases a working bike' do
-    expect(ds.release_bike.working?).to eq true
+  it 'releases a new bike that is also working' do
+   ds.bike_rack = 1
+   (expect(ds.release_bike.is_a?(Bike)).to eq true) && (expect(ds.release_bike.working?).to eq true)
   end
 
   it 'returns the bike' do
