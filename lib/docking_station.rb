@@ -4,15 +4,18 @@ class DockingStation
   attr_accessor :bike_rack
 
   def initialize
-    @bike_rack = 0
+    @bike_rack = 1
   end
 
   def release_bike
      raise StandardError, 'Piss off!' unless @bike_rack > 0
-     Bike.new #unless @bike_rack == 0
+     @bike_rack -= 1
+     Bike.new
   end
 
   def return_bike(bike)
+    raise StandardError, "I'm all full up!" if @bike_rack == 1
+    @bike_rack += 1
     @bike = bike
   end
 
