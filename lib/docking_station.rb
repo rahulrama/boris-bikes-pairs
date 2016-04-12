@@ -1,26 +1,27 @@
 require_relative 'bike'
 
 class DockingStation
-  attr_accessor :bike_rack
+  #attr_accessor :bikes
 
   def initialize
-    @bike_rack = 1
+    super
+    @bikes = []
   end
 
   def release_bike
-     raise StandardError, 'Piss off!' unless @bike_rack > 0
-     @bike_rack -= 1
-     Bike.new
+     raise StandardError, 'Piss off!' unless @bikes.length > 0
+     @bikes.pop
+    # Bike.new
   end
 
   def return_bike(bike)
-    raise StandardError, "I'm all full up!" if @bike_rack == 1
-    @bike_rack += 1
-    @bike = bike
+    raise StandardError, "I'm all full up!" if @bikes.length == 1
+    @bikes << bike
+    #@bikes = bike
   end
 
   def bike
-    @bike
+    @bikes[@bikes.length-1]
   end
   end
 

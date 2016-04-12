@@ -11,14 +11,14 @@ describe DockingStation do
   # { expect(current_bike).to eq(Bike.new) }
 
   it 'releases a new bike that is also working' do
-   ds.bike_rack = 1
+   #ds.bikes = [Bike.new]
    (expect(ds.release_bike.is_a?(Bike)).to eq true)
-   ds.bike_rack = 1
+   #ds.bikes.length = 1
    (expect(ds.release_bike.working?).to eq true)
   end
 
-  it 'returns the bike' do
-  ds.bike_rack = 0  
+  it '#returns the bike' do
+  ds.bikes = []
   (expect(ds.return_bike(bike)).to eq bike)
   end
 
