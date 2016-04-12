@@ -33,7 +33,7 @@ describe DockingStation do
       #bike2 = Bike.new
       #subject.dock(bike)
       #expect { subject.dock(bike2) }.to raise_error 'Bike already docked!'
-      20.times { subject.dock Bike.new }
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock Bike.new }
       expect { subject.dock Bike.new }.to raise_error 'Docking station full'
     end
   end
