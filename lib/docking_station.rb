@@ -1,18 +1,38 @@
-require_relative 'bike'
+require_relative "bike"
 
 class DockingStation
+  DEFAULT_CAPACITY = 20
 
-def release_bike
-	Bike.new
-end
 
-def dock(bike)
+  attr_accessor :bikes, :capacity
 
-end
+  def initialize(capacity = DEFAULT_CAPACITY)
+    @bikes = []
+    @capacity = capacity
+  end
 
-def bike
+  def dock(bike)
+    raise 'Docking station full' if full?
+    @bikes << bike
+    @bikes.last
+  end
 
-end
+  def release_bike
+    raise 'No bikes available' if empty?
+    @bikes.pop
+  end
 
+  def bikes
+    @bikes.last
+  end
+
+  private
+  def full?
+    @bikes.length >= capacity
+  end
+
+  def empty?
+    @bikes.empty?
+  end
 
 end
