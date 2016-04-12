@@ -1,8 +1,6 @@
 require_relative 'bike'
 
 class DockingStation
-  
-  attr_accessor :bike_rack
 
 def initialize
   @bike_rack = 0
@@ -12,6 +10,13 @@ end
      Bike.new
  end
 
+ def bike_rack #getter
+   @bike_rack
+ end
+
+ def bike_rack=(n) #setter
+   @bike_rack = n
+ end
 
 
 # Emma's bike return system
