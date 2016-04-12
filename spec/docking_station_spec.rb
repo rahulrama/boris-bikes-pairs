@@ -12,12 +12,24 @@ describe DockingStation do
 
   it 'releases a new bike' do
    expect(ds.release_bike.is_a?(Bike)).to eq true
-
-end
+  end
 
   it 'releases a working bike' do
     expect(ds.release_bike.working?).to eq true
-
   end
 
+  it 'returns the bike' do
+  x = ds.bike_rack
+  (expect(bike.docked?).to eq true) && (expect(ds.bike_rack).to eq (x + 1))
+  end
+  #bike boolean instance variable 'docked' = true
+  #We will expect dockingstation instance variable 'bike_rack'.length to = bike_rack.length+1
+
+
+
 end
+
+
+#As a member of the public
+#So I can return bikes I've hired
+#I want to dock my bike at the docking station
