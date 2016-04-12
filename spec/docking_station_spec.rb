@@ -23,6 +23,9 @@ describe DockingStation do
       expect { ds.release_bike }.to raise_exception if ds.bike_rack == 0
   end
 
+  it 'expects an error when return_bike tries to add a bike when subject bike_rack is greater than 0' do
+      expect { ds.return_bike }.to raise_exception if ds.bike_rack > 0
+  end
 
   #bike boolean instance variable 'docked' = true
   #We will expect dockingstation instance variable 'bike_rack'.length to = bike_rack.length+1
