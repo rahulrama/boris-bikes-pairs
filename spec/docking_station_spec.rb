@@ -11,23 +11,25 @@ describe DockingStation do
   # { expect(current_bike).to eq(Bike.new) }
 
   it 'releases a new bike that is also working' do
-   #ds.bikes = [Bike.new]
-   (expect(ds.release_bike.is_a?(Bike)).to eq true)
-   #ds.bikes.length = 1
+   ds.bikes << Bike.new
+   # print "HEY LOOK AT THIS!!!!!!!"
+   # p ds.bikes.pop.class
+   (expect(ds.release_bike.class).to eq Bike) # This f++king works don't change
+   ds.bikes << Bike.new
    (expect(ds.release_bike.working?).to eq true)
   end
 
   it '#returns the bike' do
-  ds.bikes = []
-  (expect(ds.return_bike(bike)).to eq bike)
+  (expect(ds.return_bike(bike)).to eq ds.bikes)
   end
 
   it 'expects an error when docking_station tries to instantiate a new bike if there are 0 bikes in the dock' do
-      expect { ds.release_bike }.to raise_exception if ds.bike_rack == 0
+      expect { ds.release_bike }.to raise_exception if ds.bikes.empty?
   end
 
-  it 'expects an error when return_bike tries to add a bike when subject bike_rack is greater than 0' do
-      expect { ds.return_bike }.to raise_exception if ds.bike_rack > 0
+  it 'expects an error when return_bike tries to add a bike when subject bike_rack is greater than 20' do
+      expect { ds.return_bike }.to raise_exception if ds.bikes.count >= 20
+
   end
 
   #bike boolean instance variable 'docked' = true
