@@ -7,13 +7,15 @@ describe DockingStation do
         expect(DockingStation.new).to respond_to 'release_bike'
     end
     
-   #Removing the respond_to rspec tests to clean-up (syntactic sugar)
+    #Removing the respond_to rspec tests to clean-up (syntactic sugar)
     #it 'expects a bike to be working' do
-     #   expect(DockingStation.new.release_bike).to respond_to :working?
+    #  expect(DockingStation.new.release_bike).to respond_to :working?
     #end
     
     it 'expects working to return true' do
-    expect(DockingStation.new.release_bike).to be_working
+        bike = Bike.new
+        subject.dock(bike)
+    expect(subject.release_bike).to be_working
     
     end
 	
@@ -22,8 +24,8 @@ describe DockingStation do
  #   end 
 
     it 'expects a bike to be docked' do
-	bike = Bike.new
-	expect(DockingStation.new.dock(bike)).to eq bike
+       bikes = Bike.new
+	expect(DockingStation.new.dock(bikes)).to eq [bikes]
     end
 
   #  it 'respond to bike' do
@@ -31,17 +33,16 @@ describe DockingStation do
    # end
 
    it 'contains bike' do
-	bike = Bike.new
+	bikes = Bike.new
 	station = DockingStation.new
-	station.dock(bike)
-	expect(station.bike).to eq bike
+	station.dock(bikes)
+	expect(station.bikes).to eq [bikes]
    end
 
    # Our original test which passed
    it 'returns error if dockingstation has already given out the bike' do
    station = DockingStation.new
-   station.release_bike
-   expect{station.release_bike}.to raise_error 'Bike already exists'
+   expect{station.release_bike}.to raise_error 'No bikes available'
    end
    # Maker's walkthrough test gave error when bike.working
    # describe '#release_bike' do
@@ -53,13 +54,13 @@ describe DockingStation do
            #end
 
 #Our original test passed - not as legible as Makers'
-it 'returns error if docking station already has a bike' do
-   station = DockingStation.new
-   bike = Bike.new
-   bike2 = Bike.new
-   station.dock(bike)
-   expect{station.dock(bike2)}.to raise_error 'Dock already full'
-  end
+#it 'returns error if docking station already has a bike' do
+#  station = DockingStation.new
+#  bike = Bike.new
+#  bike2 = Bike.new
+#  station.dock(bike)
+#  expect{station.dock(bike2)}.to raise_error 'Dock already full'
+# end
 
 #Makers walkthrough test 
 #describe '#dock' do
@@ -69,8 +70,12 @@ it 'returns error if docking station already has a bike' do
    # end
  # end
 
-
-
+   describe '#dock' do
+       it 'raises an error when full' do
+           20.times { subject.dock Bike.new }
+           expect { subject.dock Bike.new }.to raise_error 'Dock already full'
+           end
+       end
 
 end
  

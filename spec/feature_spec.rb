@@ -1,22 +1,22 @@
-irb
-require './lib/DockingStation'
+#irb
+#require './lib/DockingStation'
 
-station = DockingStation.new
+#station = DockingStation.new
 
-station.release_bike
+#station.release_bike
 
-bike = station.release_bike
+#bike = station.release_bike
 
-station2 = DockingStation.new
-bike2 = station2.release_bike
+#station2 = DockingStation.new
+#bike2 = station2.release_bike
 
 
-station.dock(bike)
+#station.dock(bike)
 
-station.dock(bike2)
+#station.dock(bike2)
 
-bike.working?
+#bike.working?
 
-bike2.working?
+#bike2.working?
 
 

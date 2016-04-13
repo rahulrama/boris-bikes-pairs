@@ -3,15 +3,15 @@ require_relative 'bike'
 
 
 class DockingStation
-attr_reader :bike
+attr_reader :bikes
 
+def initialize
+    @bikes = []
+  end
 # Original code which passed original test
 def release_bike
-       if @bike
-           fail "Bike already exists"
-           else
-           @bike = Bike.new
-       end
+     fail 'No bikes available' if @bikes.empty?
+           @bikes.pop
 	end
 
 # Makers walkthrough code gave error on bike.working?
@@ -22,11 +22,11 @@ def release_bike
     #end
     
 #Our code which passed	
-def dock(docked_bike)
-	if @bike
+def dock(bike)
+	if @bikes.count >= 20
             fail "Dock already full"
            else
-            @bike = docked_bike
+            @bikes << bike
            end
 	end
 
