@@ -17,15 +17,6 @@ describe DockingStation do
     expect(subject.dock(bike)).to eq bike
   end
 
-
-  # it "returns docked bikes" do
-  #   bike = Bike.new
-  #   subject.dock(bike)
-  #   bike_array = []
-  #   bike_array << bike
-  #   expect(subject.bike_array).to eq bike_array
-  # end
-
   it "returns docked bikes" do
     bike = Bike.new
     subject.dock(bike)
