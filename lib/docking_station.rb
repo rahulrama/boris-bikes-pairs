@@ -8,40 +8,26 @@ class DockingStation
   end
 
   def release_bike
-     raise StandardError, 'Piss off!' unless !@bikes.empty?
+     raise StandardError, 'Piss off!' if empty?
      @bikes.pop
-
   end
 
-  def return_bike(bike)
-    raise StandardError, "I'm all full up!" if @bikes.count >= 20
+  def dock(bike)
+    raise StandardError, "I'm all full up!" if full? #@bikes.count >= 20
     @bikes << bike
-
   end
 
-  # def bike
-  #  @bikes[@bikes.length-1]
-  # end
+  private
+
+  def full?
+    @bikes.count >= 20
   end
 
+  def empty?
+    @bikes.empty?
+  end
 
-=begin
-def initialize
-  @bike_rack = 0
 end
-
- def release_bike
-     Bike.new
- end
-
- def bike_rack #getter
-   @bike_rack
- end
-
- def bike_rack=(n) #setter
-   @bike_rack = n
- end
-=end
 
 
 
