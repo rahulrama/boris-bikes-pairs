@@ -10,12 +10,13 @@ class DockingStation
   end
 
   def release_bike
-     raise StandardError, 'Piss off!' if empty?
+     raise 'Piss off!' if empty?
+     raise "It's broken" unless bikes.last.working
      bikes.pop
   end
 
   def dock(bike)
-    raise StandardError, "I'm all full up!" if full?
+    raise "I'm all full up!" if full?
     bikes << bike
   end
 

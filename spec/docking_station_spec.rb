@@ -6,13 +6,20 @@ describe DockingStation do
     let(:ds) { DockingStation.new }
     let(:test_bikes) { ds.send(:bikes) } #To access private instance variable bikes
 
+
   it { is_expected.to respond_to(:release_bike) }
+  it 'does not release a broken bike' do
+      test_bikes << bike
+      bike.report_status(false)
+
+      expect { ds.release_bike }.to raise_error "It's broken" unless test_bikes.last.working
+    end
 
   it 'releases a new bike that is also working' do
    test_bikes << bike
    (expect(ds.release_bike.class).to eq Bike)
    test_bikes << bike
-   (expect(ds.release_bike.working?).to eq true)
+   (expect(ds.release_bike.working).to eq true)
   end
 
   it '#returns the bike' do
