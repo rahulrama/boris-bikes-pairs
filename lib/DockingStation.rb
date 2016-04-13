@@ -8,32 +8,25 @@ attr_reader :bikes
 def initialize
     @bikes = []
   end
-# Original code which passed original test
+
 def release_bike
-     fail 'No bikes available' if @bikes.empty?
+     fail 'No bikes available' if empty?
            @bikes.pop
 	end
 
-# Makers walkthrough code gave error on bike.working?
-#def release_bike
-    
-    #   fail 'No bikes available' unless @bike
-    #@bike = Bike.new
-    #end
-    
-#Our code which passed	
 def dock(bike)
-	if @bikes.count >= 20
-            fail "Dock already full"
-           else
+	fail "Docking station full " if full?
             @bikes << bike
-           end
-	end
+    end
 
-#Makers code which is more legible
-#def dock(bike)
- #   fail 'Docking station full' if @bike
-  #  @bike = bike
- # end
+private
+
+def full?
+    if @bikes.count >= 20
+ end
+
+def empty?
+    if @bikes.empty?
+  end
 
 end
