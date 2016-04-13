@@ -15,18 +15,18 @@ def release_bike
 	end
 
 def dock(bike)
-	fail "Docking station full " if full?
+	fail "Dock already full" if full?
             @bikes << bike
     end
 
 private
 
 def full?
-    if @bikes.count >= 20
+    @bikes.count >= 20
  end
 
 def empty?
-    if @bikes.empty?
+    @bikes.empty?
   end
 
 end
