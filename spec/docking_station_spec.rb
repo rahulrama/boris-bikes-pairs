@@ -9,19 +9,19 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:release_bike) } #Fine
 
-  it 'does not release a broken bike' do #Dependency
-      double_bike = double(:bike)
-      test_bikes << double_bike
-     double_bike.report_status(false)
-      expect { ds.release_bike }.to raise_error "It's broken" unless test_bikes.last.working
-    end
+    it 'does not release a broken bike' do #Dependency
+        double_bike = double(:bike)
+        test_bikes << double_bike
+       double_bike.report_status(false)
+        expect { ds.release_bike }.to raise_error "It's broken" unless test_bikes.last.working
+      end
 
-  it 'releases a new bike that is also working' do #Dependency
-   test_bikes << double(:bike)
-   (expect(ds.release_bike.class).to eq Bike)
-   test_bikes << double(:bike)
-   (expect(ds.release_bike.working).to eq true)
-  end
+    it 'releases a new bike that is also working' do #Dependency
+     test_bikes << double(:bike)
+     (expect(ds.release_bike.class).to eq Bike)
+     test_bikes << double(:bike)
+     (expect(ds.release_bike.working).to eq true)
+    end
 
   it '#returns the bike' do
   (expect(ds.dock(double(:bike))).to eq test_bikes) #Fine
