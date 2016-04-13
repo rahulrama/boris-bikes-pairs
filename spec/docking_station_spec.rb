@@ -7,6 +7,8 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:dock).with(1).argument }
 
+
+
   it 'is working' do
     bike = Bike.new
     expect(bike.working?).to be true
