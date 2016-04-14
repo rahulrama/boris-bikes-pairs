@@ -4,12 +4,14 @@ require 'bike'
 
 describe DockingStation do
 
-        let(:bikedouble) { double("bike") }
-        let(:broken_bike) {double("brokenbike")}
+        let(:bikedouble) {  double("bike", 
+                            :working? => true, 
+                            :broken? => false)  }
+        let(:broken_bike) { double("brokenbike", 
+                            :broken? => true)   }
 
     it 'should successfully release working bike' do
         subject.dock(bikedouble)
-        broken_bike.report_broken
         subject.dock(broken_bike)
         expect(subject.release_bike).to be_working
     end
