@@ -13,4 +13,11 @@ class Van
     	station.remove_broken_bikes
 	end
 
+  def deliver_broken(garage)
+    @bikes = []
+  end
+
+
+
+
 end
