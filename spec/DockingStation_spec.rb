@@ -4,26 +4,24 @@ require 'bike'
 
 describe DockingStation do
 
+        let(:bikedouble) { double("bike") }
+        let(:broken_bike) {double("brokenbike")}
+
     it 'should successfully release working bike' do
-        bike = Bike.new
-        subject.dock(bike)
-        broken_bike = Bike.new
+        subject.dock(bikedouble)
         broken_bike.report_broken
         subject.dock(broken_bike)
         expect(subject.release_bike).to be_working
     end
 
     it 'should successfully dock a working bike' do
-        bikes = Bike.new
-        subject.dock(bikes)
-        expect(subject.bikes).to eq [bikes]
+        subject.dock(bikedouble)
+        expect(subject.bikes).to eq [bikedouble]
     end
 
     it 'should successfully dock a broken bike' do
-        bike = Bike.new
-        bike.report_broken
-        subject.dock(bike)
-        expect(subject.bikes).to include bike
+        subject.dock(broken_bike)
+        expect(subject.bikes).to include broken_bike
     end
 
     it 'should raise error if attempting to release bike from empty station' do
@@ -32,28 +30,24 @@ describe DockingStation do
 
     it 'allows 45 bikes to be docked when 45 is the capacity' do
       docking_station = DockingStation.new(45)
-      bike = Bike.new
-      45.times{docking_station.dock(bike)}
+      45.times{docking_station.dock(bikedouble)}
       expect(docking_station.bikes.length).to eq 45
     end
 
     it 'should not release a bike if the bike is broken' do
-        broken_bike = Bike.new
-        broken_bike.report_broken
         subject.dock(broken_bike)
         expect(subject.release_bike).not_to eq broken_bike
     end
 
     it 'raises an error when exceding DEFAULT_CAPACITY when no custom capacity is given' do
-        DockingStation::DEFAULT_CAPACITY.times { subject.dock Bike.new }
-        expect { subject.dock Bike.new }.to raise_error 'Dock already full'
+        DockingStation::DEFAULT_CAPACITY.times { subject.dock bikedouble }
+        expect { subject.dock bikedouble }.to raise_error 'Dock already full'
     end
 
     it 'raises an error when exceding Capacity when custom capacity is given' do
         docking_station = DockingStation.new(75)
-        bike = Bike.new
-        75.times{docking_station.dock(bike)}
-        expect{docking_station.dock(bike)}.to raise_error 'Dock already full'
+        75.times{docking_station.dock(bikedouble)}
+        expect{docking_station.dock(bikedouble)}.to raise_error 'Dock already full'
     end
 
 end
