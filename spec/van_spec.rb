@@ -10,4 +10,7 @@ describe Van do
     expect(subject.bikes).to eq [brokenbike]
   end
 
+
+
+
 end

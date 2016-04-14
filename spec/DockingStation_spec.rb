@@ -51,5 +51,15 @@ describe DockingStation do
         expect{docking_station.dock(bikedouble)}.to raise_error 'Dock already full'
     end
 
+    it 'should remove broken bikes when using remove_broken_bikes method' do
+      subject.dock(bikedouble)
+      subject.dock(broken_bike)
+      subject.remove_broken_bikes
+      expect(subject.bikes).not_to include broken_bike
+    end
+
+
+
+
 end
 
