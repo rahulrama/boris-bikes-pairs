@@ -7,6 +7,9 @@ describe DockingStation do
     it 'should successfully release working bike' do
         bike = Bike.new
         subject.dock(bike)
+        broken_bike = Bike.new
+        broken_bike.report_broken
+        subject.dock(broken_bike)
         expect(subject.release_bike).to be_working
     end
 
@@ -14,6 +17,13 @@ describe DockingStation do
         bikes = Bike.new
         subject.dock(bikes)
         expect(subject.bikes).to eq [bikes]
+    end
+
+    it 'should successfully dock a broken bike' do
+        bike = Bike.new
+        bike.report_broken
+        subject.dock(bike)
+        expect(subject.bikes).to include bike
     end
 
     it 'should raise error if attempting to release bike from empty station' do
@@ -31,7 +41,7 @@ describe DockingStation do
         broken_bike = Bike.new
         broken_bike.report_broken
         subject.dock(broken_bike)
-        expect{ subject.release_bike }.to raise_error('Bike is broken')
+        expect(subject.release_bike).not_to eq broken_bike
     end
 
     it 'raises an error when exceding DEFAULT_CAPACITY when no custom capacity is given' do
