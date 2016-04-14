@@ -10,6 +10,7 @@ class Van
 
 	def collect_broken(station)
 		@bikes = station.bikes.select{|bike| bike.broken?}
+    station.remove_broken_bikes
 	end
 
 end
