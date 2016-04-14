@@ -30,7 +30,7 @@ class DockingStation
 
   private
 
-  attr_reader :bikes
+  #attr_reader :bikes
 
   def full?
       @bikes.count >= @capacity
