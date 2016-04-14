@@ -1,3 +1,4 @@
+require_relative 'Garage'
 require_relative 'DockingStation'
 
 class Van
@@ -13,11 +14,9 @@ class Van
     	station.remove_broken_bikes
 	end
 
-  def deliver_broken(garage)
-    @bikes = []
-  end
-
-
-
+  	def deliver_broken(garage)
+    	garage.receive_broken(@bikes)
+    	@bikes = []
+  	end
 
 end
