@@ -1,4 +1,3 @@
-
 require_relative 'bike'
 
 class DockingStation
@@ -20,6 +19,10 @@ class DockingStation
   def dock(bike)
     fail "Dock already full" if full?
     @bikes << bike
+  end
+
+  def remove_broken_bikes
+    @bikes = @bikes.reject{|bike| bike.broken?}
   end
 
 private
