@@ -7,7 +7,7 @@ class DockingStation
   def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
     @capacity = capacity
-  end
+      end
 
   def release_bike
      raise 'Piss off!' if empty?

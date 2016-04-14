@@ -8,7 +8,7 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:release_bike) } #Fine
 
-    it 'does not release a broken bike' do #Dependency
+      it 'does not release a broken bike' do #Dependency
         test_bikes << bike
         allow(bike).to receive(:report_status).with(false).and_return(false) #To pass with argument
         bike.report_status(false)
@@ -16,7 +16,7 @@ describe DockingStation do
         expect { ds.release_bike }.to raise_error "It's broken" unless test_bikes.last.working
       end
 
-    it 'releases a new bike that is also working' do #Dependency
+        it 'releases a new bike that is also working' do #Dependency
      test_bikes << bike
 #      bike = double(:bike, working: true)
      #allow(bike).to receive(:working).and_return(true)
@@ -34,7 +34,7 @@ describe DockingStation do
 
   #fine
   it 'expects an error when dock tries to add a bike when subject bike_rack is greater than capacity' do
-      expect { ds.dock }.to raise_exception if test_bikes.count >= subject.capacity
+      expect { ds.dock }.to raise_exception #if test_bikes.count >= subject.capacity
   end
 
   #Dependency
