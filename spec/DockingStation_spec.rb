@@ -1,13 +1,12 @@
 require 'DockingStation'
 
-require 'bike'
 
 describe DockingStation do
 
-        let(:bikedouble) {  double("bike", 
-                            :working? => true, 
+        let(:bikedouble) {  double("bike",
+                            :working? => true,
                             :broken? => false)  }
-        let(:broken_bike) { double("brokenbike", 
+        let(:broken_bike) { double("brokenbike",
                             :broken? => true)   }
 
     it 'should successfully release working bike' do
