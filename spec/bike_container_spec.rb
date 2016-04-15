@@ -1,0 +1,3 @@
+describe BikeContainer do
+
+end
