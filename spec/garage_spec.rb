@@ -21,5 +21,3 @@ describe Garage do
   end
 
 
-
-end
