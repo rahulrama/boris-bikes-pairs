@@ -1,10 +1,8 @@
 module BikeContainer
 
-
-
 DEFAULT_CAPACITY = 20
 
-attr_reader :capacity, :bikes
+attr_reader :capacity
 
 def initialize(capacity=DEFAULT_CAPACITY)
     @bikes = []
@@ -18,33 +16,28 @@ def accept(bike)
 end
 
 def release(bike)
+  raise "#{self.class} is empty" if empty?
   bikes.pop
 
 end
 
-def full?
-    bikes.count >= @capacity
+
+  def full?
+    bikes.count >= capacity
   end
 
   def empty?
     bikes.empty?
   end
 
+private
 
+attr_reader :bikes
 
 end
 
 
 
-
-
-
-
-
-
-
-
-
-class BikeContainer_class
-include BikeContainer
-end
+# class BikeContainer_class
+# include BikeContainer
+# end

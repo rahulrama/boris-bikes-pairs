@@ -1,5 +1,6 @@
 class Bike
-#testing_git_tracking 	
+#testing_git_tracking
+attr_reader :broken
 	def initialize
 		@broken = false
 	end
