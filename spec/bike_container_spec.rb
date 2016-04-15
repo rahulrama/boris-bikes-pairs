@@ -12,9 +12,15 @@ shared_examples_for "shared behaviors" do
     expect(subject.accept(bike)).to eq bike
   end
 
+  it "releases a bike" do
+    subject.accept(bike)
+    expect(subject.release(bike)).to eq bike
+  end
 
-  # it "raises an error when full" do
-  #   subject.capacity.times
+  it "raises an error when full" do
+     subject.capacity.times{subject.accept(bike)}
+     expect{subject.accept(bike)}.to raise_error "#{subject.class} is already full"
+   end
 
 
 end
